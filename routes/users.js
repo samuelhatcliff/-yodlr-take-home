@@ -21,17 +21,11 @@ router.get('/', function (req, res) {
 /* Create a new user */
 router.post('/', function (req, res, next) {
   var user = req.body;
-  console.log("REQ BODY", user)
   try {
     const validator = jsonschema.validate(user, registerSchema);
     if (!validator.valid) {
-      console.log('invalid'
-      )
-      // const errs = validator.errors.map(e => e.stack);
-      // throw new BadRequestError(errs);
-    }
-    if (validator.valid) {
-      console.log('validator was valid')
+      const errs = validator.errors.map(e => e.stack);
+      throw new BadRequestError(errs);
     }
   } catch (err) {
     return next(err);
