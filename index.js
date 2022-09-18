@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var logger = require('./lib/logger');
 var cors = require('cors');
 
-
 var users = require('./routes/users');
 
 var app = express();

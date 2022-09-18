@@ -1,4 +1,5 @@
 const form = document.querySelector('form')
+const message = document.getElementById('message');
 const BASE = "http://localhost:3000"
 form.addEventListener("submit", async function (evt) {
     evt.preventDefault();
@@ -8,5 +9,9 @@ form.addEventListener("submit", async function (evt) {
         body[key] = value;
     }
     const req = await axios.post(`${BASE}/users`, body);
-    console.log(req);
+    if (req.status === 200) {
+        message.setAttribute('class', 'alert alert-success')
+        message.innerHTML = "Registration Successful!";
+    }
+    console.log(req.status)
 })

@@ -7,7 +7,7 @@ async function render() {
     for (let user of users.data) {
         const li = document.createElement('li');
         li.innerHTML = `First Name: ${user.firstName}
-        Last Name: ${user.lastName} Email:${user.email}`
+        Last Name: ${user.lastName} Email:${user.email}`;
         const removeButton = document.createElement('button');
         removeButton.setAttribute('id', user.id);
         li.append(removeButton);
