@@ -5,15 +5,36 @@ let users;
 async function render() {
     users = await axios.get(`${BASE}/users`);
     for (let user of users.data) {
-        const li = document.createElement('li');
-        li.innerHTML = `First Name: ${user.firstName}
-        Last Name: ${user.lastName} Email:${user.email}`;
+        const userUl = document.createElement('ul');
+        userUl.setAttribute('class', 'list-group list-group-horizontal flex-fill');
+
+        const userId = document.createElement('li');
+        userId.innerHTML = `User ID: ${user.id}`
+        console.log(userId, user.id);
+
+        const email = document.createElement('li');
+        email.innerHTML = `Email:${user.email}`;
+
+        const firstName = document.createElement('li');
+        firstName.innerHTML = `First Name: ${user.firstName}`;
+
+        const lastName = document.createElement('li');
+        lastName.innerHTML = `Last Name: ${user.lastName}`;
+
+        const columns = [userId, email, firstName, lastName]
+
+        for (let col of columns) {
+            col.setAttribute('class', 'list-group-item flex-fill ')
+        }
         const removeButton = document.createElement('button');
         removeButton.setAttribute('id', user.id);
-        li.append(removeButton);
-        ul.append(li);
+        removeButton.setAttribute('class', 'btn btn-outline-danger')
+        removeButton.innerHTML = "Remove User"
+        userUl.append(userId, email, firstName, lastName, removeButton)
+        ul.append(userUl);
     }
 }
+
 const removeButtons = document.querySelectorAll('button')
 ul.addEventListener('click', async (evt) => {
     if (evt.target.nodeName === 'BUTTON') {

@@ -8,10 +8,16 @@ form.addEventListener("submit", async function (evt) {
     for (let [key, value] of formData.entries()) {
         body[key] = value;
     }
-    const req = await axios.post(`${BASE}/users`, body);
-    if (req.status === 200) {
-        message.setAttribute('class', 'alert alert-success')
-        message.innerHTML = "Registration Successful!";
+    try {
+        const req = await axios.post(`${BASE}/users`, body);
+        if (req.status === 200) {
+            message.setAttribute('class', 'alert alert-success')
+            message.setAttribute('role', 'alert')
+            message.innerHTML = "Registration Successful!";
+        }
+    } catch (err) {
+        message.setAttribute('class', 'alert alert-danger')
+        message.setAttribute('role', 'alert')
+        message.innerHTML = `Registration failed. Please try again and make sure you have filled out each form.`;
     }
-    console.log(req.status)
 })
