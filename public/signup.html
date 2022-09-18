@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset=utf-8>
   <title>Yodlr Registration Portal</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
   <h1>Yodlr Registration Portal</h1>
-  <form>
-    Email: <input type="email" name="email"></br>
+  <form id="form">
+    Email: <input type="email" name="email" value="samuel.hatcliff@gmail.com"></br>
+    Username: <input type="text" name="username" value="sammy"></br>
+    Password: <input type="password" name="password" value="hatzzz"></br>
+    First Name: <input type="text" name="first-name" value="samuel"></br>
+    Last Name: <input type="text" name="last-name" value="hatcliff"></br>
     <button type="submit">Submit</button>
   </form>
   <p>
     <a href="/admin.html">Admin Page</a>
   </p>
+  <script src="signup.js"></script>
+
 </body>
+
 </html>
