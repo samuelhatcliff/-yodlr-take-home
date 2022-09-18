@@ -20,13 +20,8 @@ router.get('/', function (req, res) {
 
 /* Create a new user */
 router.post('/', function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-
-  log.info('sdfsafdasdfsa')
-
-  console.log("HIT ROUTE")
   var user = req.body;
-  console.log("REQ BODY", req.body, req)
+  console.log("REQ BODY", user)
   try {
     const validator = jsonschema.validate(user, registerSchema);
     if (!validator.valid) {
@@ -41,13 +36,12 @@ router.post('/', function (req, res, next) {
   } catch (err) {
     return next(err);
   }
-  log.info('sdfsafdasdfsa')
   user.id = curId++;
   if (!user.state) {
     user.state = 'pending';
   }
   users[user.id] = user;
-  log.info('Created userrrr', user);
+  log.info('Created user', user);
   res.json(user);
 });
 

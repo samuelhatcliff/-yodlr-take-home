@@ -30,8 +30,12 @@
             "format": "email"
         }
     },
-    "additionalProperties": false,
+    "additionalProperties": true,
     "required": [
-        "username"
+        "username",
+        "email",
+        "password",
+        "first-name",
+        "last-name"
     ]
 }

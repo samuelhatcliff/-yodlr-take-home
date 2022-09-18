@@ -7,7 +7,6 @@ form.addEventListener("submit", async function (evt) {
     for (let [key, value] of formData.entries()) {
         body[key] = value;
     }
-    console.log(body)
-    const req = await axios.post(`${BASE}/users`, { body })
+    const req = await axios.post(`${BASE}/users`, body)
     console.log(req);
 })
