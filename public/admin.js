@@ -1,6 +1,12 @@
 const BASE = "http://localhost:3000"
 const ul = document.querySelector('ul')
 let users;
+const newUser = document.getElementById("new-user");
+console.log(newUser)
+newUser.addEventListener('click', () => {
+    window.location.href = "/signup.html"
+    console.log('teeest')
+})
 
 async function render() {
     users = await axios.get(`${BASE}/users`);
